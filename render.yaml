@@ -4,6 +4,11 @@ services:
     env: node
     buildCommand: npm install && npm run setup && npm run seed
     startCommand: npm start
+    # Persistent disk to store SQLite database
+    disk:
+      name: threatfox-db
+      mountPath: /opt/render/project/src/database
+      sizeGB: 1
     envVars:
       - key: NODE_ENV
         value: production
@@ -11,3 +16,5 @@ services:
         generateValue: true
       - key: JWT_EXPIRES_IN
         value: 7d
+      - key: DB_PATH
+        value: /opt/render/project/src/database/threatfox.db

@@ -4,4 +4,5 @@ node_modules/
 *.log
 .DS_Store
 coverage/
-*.csv
+# Comment out CSV files so they can be deployed to Render for seeding
+# *.csv
