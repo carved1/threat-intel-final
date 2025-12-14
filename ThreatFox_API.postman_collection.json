@@ -1,0 +1,274 @@
+{
+  "info": {
+    "name": "ThreatFox IOC API",
+    "description": "RESTful API for managing ThreatFox Indicators of Compromise (IOCs)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "SHA256 Hashes",
+      "item": [
+        {
+          "name": "Get All SHA256 Hashes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/sha256?page=1&limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "sha256"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"},
+                {"key": "threat_type", "value": "payload", "disabled": true},
+                {"key": "min_confidence", "value": "90", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get SHA256 by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/sha256/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "sha256", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create SHA256",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ioc_id\": \"TEST001\",\n  \"ioc_value\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n  \"threat_type\": \"payload\",\n  \"malware\": \"test.malware\",\n  \"malware_printable\": \"Test Malware\",\n  \"confidence_level\": 95,\n  \"first_seen_utc\": \"2025-12-07T10:00:00.000Z\",\n  \"reporter\": \"test_user\",\n  \"tags\": \"test,sample\",\n  \"reference\": \"https://example.com/reference\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/sha256",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "sha256"]
+            }
+          }
+        },
+        {
+          "name": "Update SHA256",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"confidence_level\": 100,\n  \"tags\": \"updated,verified\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/sha256/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "sha256", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete SHA256",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/sha256/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "sha256", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "URLs",
+      "item": [
+        {
+          "name": "Get All URLs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/urls?page=1&limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "urls"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"},
+                {"key": "threat_type", "value": "payload_delivery", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get URL by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/urls/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "urls", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create URL",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ioc_id\": \"TEST_URL001\",\n  \"ioc_value\": \"http://malicious-site.com/payload\",\n  \"threat_type\": \"payload_delivery\",\n  \"malware\": \"test.malware\",\n  \"malware_printable\": \"Test Malware\",\n  \"confidence_level\": 90,\n  \"first_seen_utc\": \"2025-12-07T10:00:00.000Z\",\n  \"reporter\": \"test_user\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/urls",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "urls"]
+            }
+          }
+        },
+        {
+          "name": "Update URL",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"confidence_level\": 100\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/urls/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "urls", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete URL",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/urls/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "urls", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "IP:Port",
+      "item": [
+        {
+          "name": "Get All IP:Port",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/ipports?page=1&limit=10",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "ipports"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "limit", "value": "10"},
+                {"key": "threat_type", "value": "botnet_cc", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get IP:Port by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/ipports/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "ipports", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create IP:Port",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ioc_id\": \"TEST_IP001\",\n  \"ioc_value\": \"192.168.1.1:8080\",\n  \"threat_type\": \"botnet_cc\",\n  \"malware\": \"test.malware\",\n  \"malware_printable\": \"Test Malware\",\n  \"confidence_level\": 85,\n  \"first_seen_utc\": \"2025-12-07T10:00:00.000Z\",\n  \"reporter\": \"test_user\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/ipports",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "ipports"]
+            }
+          }
+        },
+        {
+          "name": "Update IP:Port",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"confidence_level\": 95\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/ipports/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "ipports", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete IP:Port",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/ipports/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "ipports", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
